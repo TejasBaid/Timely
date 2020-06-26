@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:timely/utilities/constants.dart';
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'home_tab.dart';
-import 'package:flutter_svg_provider/flutter_svg_provider.dart';
+import 'project_tab.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -80,6 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: 50,
                         width: 350,
                         margin: EdgeInsets.only(bottom: 10),
+
                         child: TabBar(
                               labelColor: Colors.white,
                               unselectedLabelColor: Colors.grey,
@@ -113,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: new EdgeInsets.all(10.0),
                 child:  new TabBarView(children: <Widget>[
                   HomeTab(),
-                  Text("Hello World"),
+                  ProjectTab(),
                   Text("Hello World"),
 
                 ])

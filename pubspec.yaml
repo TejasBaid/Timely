@@ -30,6 +30,5 @@ flutter:
 
 
   assets:
-     - images/google.png
-     - images/google.svg
+     - images/clock.svg
 
