@@ -14,6 +14,25 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: Align(
+        alignment: Alignment.bottomLeft,
+        child: Container(
+          margin: EdgeInsets.only(left: 30),
+          child: FloatingActionButton(
+            onPressed: (){},
+            backgroundColor: Colors.blueAccent,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(40)
+            ),
+            child:Icon(
+              Icons.add,
+              color: Colors.white,
+              size: 30,
+            ),
+          ),
+        ),
+      ),
       backgroundColor: kPrimaryColor,
       body: DefaultTabController(
         length: 3,
@@ -29,10 +48,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   flexibleSpace: FlexibleSpaceBar(
 
                     background: Container(
-                      padding: EdgeInsets.only(top: 50,left: 20),
+                      padding: EdgeInsets.only(top: 50,left: 30),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
+
                           Icon(
                             Icons.menu,
                             color: Colors.black.withOpacity(0.7),
@@ -60,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
 
                           SizedBox(
-                            height: MediaQuery.of(context).size.height *0.01,
+                            height: MediaQuery.of(context).size.height *0.02,
                           ),
                           Text(
                             "26 June 2020",
@@ -78,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     preferredSize: Size(30,30),
                       child: Container(
                         height: 50,
-                        width: 350,
+                        width: 320,
                         margin: EdgeInsets.only(bottom: 10),
 
                         child: TabBar(

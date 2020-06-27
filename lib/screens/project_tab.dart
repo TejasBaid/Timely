@@ -15,7 +15,8 @@ class _ProjectTabState extends State<ProjectTab> {
       children: <Widget>[
         SizedBox(height:MediaQuery.of(context).size.height*0.04,),
         Container(
-          height: MediaQuery.of(context).size.height*0.5,
+          padding: EdgeInsets.symmetric(vertical: 15),
+//          height: MediaQuery.of(context).size.height*0.23,
           width: MediaQuery.of(context).size.width*0.8,
           decoration: BoxDecoration(
             color: Colors.white,
@@ -31,7 +32,7 @@ class _ProjectTabState extends State<ProjectTab> {
           ),
           child:  Column(
             children: <Widget>[
-              SizedBox(height: 20,),
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
@@ -52,7 +53,7 @@ class _ProjectTabState extends State<ProjectTab> {
                       SizedBox(width: 20,),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           Text(
                             "Social Media App",
@@ -61,12 +62,33 @@ class _ProjectTabState extends State<ProjectTab> {
                               fontSize: 17,
                             ),
                           ),
-                          Text(
-                            "Total Time: 06:21:00",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 10,
-                            ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Container(
+                                height: 30,
+                                padding: EdgeInsets.symmetric(horizontal: 20),
+                                margin: EdgeInsets.only(top: 10),
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    width: 0.5,
+                                    color: Colors.black26,
+                                  ),
+
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    "06:23:05",
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ),
+                              ),
+
+                            ],
                           ),
 
 
@@ -81,83 +103,43 @@ class _ProjectTabState extends State<ProjectTab> {
               SizedBox(height:MediaQuery.of(context).size.height*0.02,),
               SizedBox(width: 20,),
 
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Container(
-                  margin: EdgeInsets.only(left: 20),
-                  child: Text(
-                    "Recents",
-                    style: TextStyle(
-                      color: Colors.black.withOpacity(0.8),
-                      fontWeight: FontWeight.w700,
-                      fontSize: 15,
-                    ),
-                  ),
-                ),
-              ),
+
               Container(
-                height: 100,
-                child: Row(
-                  children: <Widget>[
-                    Row(
-
+                width: MediaQuery.of(context).size.width *0.5,
+                height: 45,
+                decoration: BoxDecoration(
+                  color: Colors.blueAccent,
+                  borderRadius:BorderRadius.circular(30)
+                ),
+                child: RaisedButton(
+                  onPressed: (){},
+                  elevation: 2,
+                  padding: EdgeInsets.all(0),
+                  color: Colors.blueAccent,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30)
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        SizedBox(width: 20,),
+                        Icon(
+                          Icons.add,
+                          color: Colors.white,
+                          size: 30,
+                        ),
                         Text(
-                          "Social Media App",
+                          "Start a new task",
                           style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 15,
-                          ),
-                        ),
-
-                        Container(
-                          height: 30,
-                          width: 80,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Colors.black12
-                            )
-                          ),
-                          margin: EdgeInsets.only(left: 20),
-                          child: Center(
-                            child: Text(
-                              "06:21:00",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                fontSize: 15,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(left: 15),
-                          height: 30,
-                          width: 30,
-                          decoration: BoxDecoration(
-                            color: Colors.blueAccent,
-
-                            borderRadius: BorderRadius.circular(60),
-                          ),
-                          child: RaisedButton(
-                            color: Colors.blueAccent,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(60),
-                            ),
-                            padding: EdgeInsets.all(0),
-                            onPressed: (){},
-                            child: Center(
-                              child: Icon(
-                                Icons.play_arrow,
-                                size: 20,
-                                color: Colors.white,
-                              ),
-                            ),
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 15
                           ),
                         ),
                       ],
                     ),
-                  ],
+                  ),
                 ),
               ),
             ],
