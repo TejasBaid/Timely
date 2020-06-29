@@ -4,6 +4,7 @@ import 'package:timely/screens/signup.dart';
 import 'package:timely/utilities/constants.dart';
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'home_tab.dart';
+import 'signup.dart';
 import 'project_tab.dart';
 
 
@@ -15,6 +16,29 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   FirebaseAuth _auth = FirebaseAuth.instance;
+
+  Widget buildBottomSheet(BuildContext context){
+    return Container(
+      color: Color(0xff696C74),
+      height: MediaQuery.of(context).size.height *0.5,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(40),
+            topLeft: Radius.circular(40),
+          ),
+        ),
+        child: Column(
+          children: <Widget>[
+            SizedBox(height: MediaQuery.of(context).size.height*0.03,),
+            CustomHeader2(text:'Create a new project'),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +48,9 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Container(
           margin: EdgeInsets.only(left: 30),
           child: FloatingActionButton(
-            onPressed: (){},
+            onPressed: (){
+              showModalBottomSheet(context: context, builder: buildBottomSheet);
+            },
             backgroundColor: Colors.blueAccent,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(40)
@@ -189,6 +215,40 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   @override
   bool shouldRebuild(_SliverAppBarDelegate oldDelegate) {
     return false;
+  }
+}
+class CustomHeader2 extends StatelessWidget {
+  const CustomHeader2({
+    Key key,
+    this.text
+  }) : super(key: key);
+  final text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        SizedBox(
+          width: 30,
+        ),
+        Text(
+          text,
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w900,
+          ),
+        ),
+        Container(
+          margin: EdgeInsets.only(top: 10,left: 5),
+          height: 10,
+          width: 10,
+          decoration: BoxDecoration(
+              color: Colors.blueAccent,
+              borderRadius: BorderRadius.circular(60)),
+        ),
+      ],
+    );
   }
 }
 
