@@ -6,7 +6,7 @@ import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'home_tab.dart';
 import 'signup.dart';
 import 'project_tab.dart';
-
+import 'project_sheet.dart';
 
 class HomeScreen extends StatefulWidget {
   static String id = "home_screen";
@@ -17,27 +17,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   FirebaseAuth _auth = FirebaseAuth.instance;
 
-  Widget buildBottomSheet(BuildContext context){
-    return Container(
-      color: Color(0xff696C74),
-      height: MediaQuery.of(context).size.height *0.5,
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topRight: Radius.circular(40),
-            topLeft: Radius.circular(40),
-          ),
-        ),
-        child: Column(
-          children: <Widget>[
-            SizedBox(height: MediaQuery.of(context).size.height*0.03,),
-            CustomHeader2(text:'Create a new project'),
-          ],
-        ),
-      ),
-    );
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +29,9 @@ class _HomeScreenState extends State<HomeScreen> {
           margin: EdgeInsets.only(left: 30),
           child: FloatingActionButton(
             onPressed: (){
-              showModalBottomSheet(context: context, builder: buildBottomSheet);
+              showModalBottomSheet(context: context,
+                  builder: (context)=> AddProject()
+              );
             },
             backgroundColor: Colors.blueAccent,
             shape: RoundedRectangleBorder(
