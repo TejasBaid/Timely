@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>184546021026-r0nf5t9l4i86rjmi2hn20p8gmlge02vl.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.184546021026-r0nf5t9l4i86rjmi2hn20p8gmlge02vl</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBLvXSu_cC2diN0DXCjOsMi0wadQXVhI-k</string>
+	<key>GCM_SENDER_ID</key>
+	<string>184546021026</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.tejasbaid3.timely</string>
+	<key>PROJECT_ID</key>
+	<string>timely-f0f70</string>
+	<key>STORAGE_BUCKET</key>
+	<string>timely-f0f70.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:184546021026:ios:55553dc94918846bc0d1fb</string>
+	<key>DATABASE_URL</key>
+	<string>https://timely-f0f70.firebaseio.com</string>
+</dict>
+</plist>

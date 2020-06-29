@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:timely/screens/signup.dart';
 import 'package:timely/utilities/constants.dart';
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'home_tab.dart';
@@ -6,11 +8,13 @@ import 'project_tab.dart';
 
 
 class HomeScreen extends StatefulWidget {
+  static String id = "home_screen";
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  FirebaseAuth _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,14 +52,29 @@ class _HomeScreenState extends State<HomeScreen> {
                   flexibleSpace: FlexibleSpaceBar(
 
                     background: Container(
-                      padding: EdgeInsets.only(top: 50,left: 30),
+                      padding: EdgeInsets.only(top: 50,left: 30,right: 20 ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
 
-                          Icon(
-                            Icons.menu,
-                            color: Colors.black.withOpacity(0.7),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Icon(
+                                Icons.menu,
+                                color: Colors.black.withOpacity(0.7),
+                              ),
+                              GestureDetector(
+                                onTap: (){
+                                  _auth.signOut();
+                                  Navigator.pushNamed(context, SignupPage.id);
+                                },
+                                child: Icon(
+                                  Icons.exit_to_app,
+                                  color: Colors.black.withOpacity(0.7),
+                                ),
+                              ),
+                            ],
                           ),
                           SizedBox(
                             height: MediaQuery.of(context).size.height *0.04,

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:timely/screens/login.dart';
+import 'package:timely/screens/signup.dart';
 import 'screens/home_screen.dart';
+import 'screens/splash_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -9,7 +12,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
-      home: HomeScreen(),
+      initialRoute: SplashScreen.id,
+      routes: {
+        HomeScreen.id: (context) => HomeScreen(),
+        SignupPage.id: (context) => SignupPage(),
+        LoginPage.id: (context) => LoginPage(),
+        SplashScreen.id: (context) => SplashScreen(),
+      },
     );
   }
 }
