@@ -14,8 +14,9 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen>  {
   FirebaseAuth _auth = FirebaseAuth.instance;
+
 
 
 
@@ -144,6 +145,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ],
 
                               ),
+
                       ),
                       ),
                     shape: RoundedRectangleBorder(
@@ -163,7 +165,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   HomeTab(),
                   ProjectTab(),
                   Text("Hello World"),
-
                 ])
             )
 

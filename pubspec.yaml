@@ -22,6 +22,7 @@ dependencies:
   cloud_firestore: ^0.13.7
   flutter_flexible_toast: ^0.1.4
   font_awesome_flutter: ^8.7.1
+  provider: ^3.1.0
 
 
 
