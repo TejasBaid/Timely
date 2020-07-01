@@ -1,17 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg_provider/flutter_svg_provider.dart';
+import 'package:timely/classes/task_model.dart';
+import 'package:timely/screens/task_sheet.dart';
 import 'package:timely/utilities/constants.dart';
 import 'package:timely/global_variables.dart';
 import 'package:provider/provider.dart';
 import 'package:timely/classes/project_model.dart';
+import 'home_screen.dart';
+import 'package:timely/classes/task_model.dart';
 
 class ProjectTab extends StatefulWidget {
+  ProjectTab({this.changeTab});
+  final TabController changeTab;
   static String id = "project_tab";
   @override
-  _ProjectTabState createState() => _ProjectTabState();
+  _ProjectTabState createState() => _ProjectTabState(tabChange: changeTab);
 }
 
 class _ProjectTabState extends State<ProjectTab> {
-  
+  int _tabIndex = 1;
+  _ProjectTabState({this.tabChange});
+  final TabController tabChange;
+  void _toggleTab() {
+    _tabIndex = tabChange.index + -1;
+    tabChange.animateTo(_tabIndex);
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,7 +43,15 @@ class _ProjectTabState extends State<ProjectTab> {
                     color: projectModel.projects[index].tagColor,
                     duration: projectModel.projects[index].totalDuration,
                     onPressed: (){
-                      projectModel.removeProject(index);
+                      _toggleTab();
+                      showModalBottomSheet(context: context,
+                          builder: (context)=> AddTask(
+                            color: projectModel.projects[index].tagColor,
+                          projectName: projectModel.projects[index].projectName,
+
+                          )
+                      );
+
                     },
                   );
                 }else{
@@ -61,8 +82,7 @@ class ProjectCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 30),
-      padding: EdgeInsets.symmetric(vertical: 20),
+      padding: EdgeInsets.symmetric(vertical: 15),
 //          height: MediaQuery.of(context).size.height*0.23,
       width: MediaQuery.of(context).size.width*0.8,
       decoration: BoxDecoration(
@@ -80,90 +100,99 @@ class ProjectCard extends StatelessWidget {
       child:  Column(
         children: <Widget>[
 
-          Align(
-            alignment: Alignment.centerRight,
-            child: Container(
-              width: MediaQuery.of(context).size.width*0.5,
-              child: Row(
-               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Row(
                 children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Text(
-                        name,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 17,
-                        ),
-                      ),
-                      SizedBox(width: 5,),
-                      Container(
-                        height: 12,
-                        width: 12,
-                        decoration: BoxDecoration(
-                          color: color,
-                          borderRadius: BorderRadius.circular(60),
-                        ),
-                      ),
-                    ],
-                  ),
+                  SizedBox(width: 15,),
                   Container(
-                    margin: EdgeInsets.only(bottom: 10,right: 10),
-                    child: Align(
-                      alignment: Alignment.topRight,
-                      child: GestureDetector(
-                        onTap: onPressed,
-                        child: Icon(
-                          Icons.delete,
-                          color: Colors.black.withOpacity(0.7),
-                        ),
-                      ),
+                    decoration: BoxDecoration(
+                      color: kPrimaryColor,
+                      borderRadius: BorderRadius.circular(20),
                     ),
+                    height: 80,
+                    width: 80,
+                    child: Container(
+                      child: Image(image: Svg('images/google.svg',height: 60)),
+                    ),
+                  ),
+                  SizedBox(width: 20,),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Text(
+                            name,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 17,
+                            ),
+                          ),
+                          SizedBox(width: 5,),
+                          Container(
+                            height: 10,
+                            width: 10,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(60),
+                              color: color,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Container(
+                            height: 30,
+                            padding: EdgeInsets.symmetric(horizontal: 20),
+                            margin: EdgeInsets.only(top: 10),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                width: 0.5,
+                                color: Colors.black26,
+                              ),
+
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: Center(
+                              child: Text(
+                                duration,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
+                          ),
+
+                        ],
+                      ),
+
+
+                    ],
                   ),
                 ],
               ),
-            ),
-          ),
-          Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                height: 30,
-                padding: EdgeInsets.symmetric(horizontal: 40),
-                margin: EdgeInsets.only(top: 10),
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    width: 0.5,
-                    color: Colors.black26,
-                  ),
 
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                child: Center(
-                  child: Text(
-                    duration,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600
-                    ),
-                  ),
-                ),
-              ),
 
             ],
           ),
           SizedBox(height:MediaQuery.of(context).size.height*0.02,),
           SizedBox(width: 20,),
+
+
           Container(
-            width: MediaQuery.of(context).size.width *0.6,
+            width: MediaQuery.of(context).size.width *0.5,
             height: 45,
             decoration: BoxDecoration(
-              color: Colors.blueAccent,
-              borderRadius:BorderRadius.circular(30)
+                color: Colors.blueAccent,
+                borderRadius:BorderRadius.circular(30)
             ),
             child: RaisedButton(
-              onPressed: (){},
+              onPressed: onPressed,
               elevation: 2,
               padding: EdgeInsets.all(0),
               color: Colors.blueAccent,
@@ -173,22 +202,19 @@ class ProjectCard extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 15),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Icon(
                       Icons.add,
                       color: Colors.white,
                       size: 30,
                     ),
-                    Container(
-                      margin: EdgeInsets.only(left: 3),
-                      child: Text(
-                        "Start a new task",
-                        style: TextStyle(
+                    Text(
+                      "Start a new task",
+                      style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w600,
                           fontSize: 15
-                        ),
                       ),
                     ),
                   ],

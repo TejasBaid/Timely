@@ -193,7 +193,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                 controller: _tabController,
                   children: <Widget>[
                 HomeTab(),
-                ProjectTab(),
+                ProjectTab(changeTab: _tabController,),
                 Text("Hello World"),
               ])
           )
