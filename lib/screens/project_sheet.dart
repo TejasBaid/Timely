@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:timely/classes/project.dart';
 import 'package:timely/classes/project_model.dart';
+import 'package:timely/screens/project_tab.dart';
 import 'home_screen.dart';
 import 'package:timely/classes/color_select.dart';
 import 'package:timely/global_variables.dart';
 import 'package:provider/provider.dart';
+
 
 
 class AddProject extends StatefulWidget {
@@ -150,7 +152,10 @@ class _AddProjectState extends State<AddProject> {
                       totalDuration: "00:00:00"
                   );
                   Provider.of<ProjectModel>(context).addProject(name, color, "00:00:00");
-                  Navigator.pop(context);
+                  setState(() {
+                    Navigator.pop(context);
+
+                  });
                 },
                 child: Center(
                   child: Text(

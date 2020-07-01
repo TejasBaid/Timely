@@ -5,6 +5,7 @@ import 'package:timely/screens/signup.dart';
 import 'screens/home_screen.dart';
 import 'screens/splash_screen.dart';
 import 'package:provider/provider.dart';
+import 'screens/project_tab.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
         title: 'Material App',
         initialRoute: SplashScreen.id,
         routes: {
+          ProjectTab.id: (context) => ProjectTab(),
           HomeScreen.id: (context) => HomeScreen(),
           SignupPage.id: (context) => SignupPage(),
           LoginPage.id: (context) => LoginPage(),
